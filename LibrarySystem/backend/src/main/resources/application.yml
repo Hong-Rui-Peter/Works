@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: library-backend
+  datasource:
+    url: jdbc:mysql://r91da3ck0vve9p27:s1j41gu72w4mfrtq@m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/xsnyjcrjiagwp4b8
+    username: r91da3ck0vve9p27
+    password: s1j41gu72w4mfrtq
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      # 連線池設定
+      # 不要超過 max_user_connections（例如 10）
+      maximum-pool-size: 3
+      minimum-idle: 1
+      # ms 閒置多久釋放連線
+      idle-timeout: 10000
+      # ms 連線最大存活時間
+      max-lifetime: 30000
+      # ms 取得連線逾時時間
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  web:
+    resources:
+      static-locations: file:/app/static/
+
+logging:
+  level:
+    com.groupone.librarysystem: DEBUG
+    org.mybatis: DEBUG
+    org.springframework.jdbc: DEBUG
+    org.springframework: INFO
+
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.librarySystem.librarySystem.model
+  # type-aliases-package: com.groupone.librarysystem.library_backend.model
+
+debug: true
+
+server:
+  port: ${PORT:8080}

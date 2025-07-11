@@ -1,0 +1,30 @@
+.read {
+  width: 100%;
+  padding-top: 15px;
+  background-color: #e6e6e6;
+  color: #333;
+}
+.chapter-title {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+.chapter-content {
+  max-width: 768px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-indent: 2em; /* 首行縮排 */
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 2rem;
+}
+
+.chapter-content p {
+  text-align: left;
+  margin-bottom: 1em;
+  color: black;
+  position: relative;
+  left: 40px;
+}

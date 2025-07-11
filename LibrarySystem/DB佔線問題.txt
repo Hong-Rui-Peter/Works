@@ -1,0 +1,23 @@
+-- 找出 Sleep 狀態且連線時間長的 ID
+
+SHOW FULL PROCESSLIST;
+
+
+砍掉某些 Sleep 連線
+
+
+KILL <ID>;
+
+
+SELECT CONCAT('KILL ', id, ';') 
+FROM information_schema.PROCESSLIST 
+WHERE id <> CONNECTION_ID();
+
+
+只看 Sleep 的連線數
+
+
+SELECT ID, HOST, TIME
+FROM information_schema.PROCESSLIST
+WHERE COMMAND = 'Sleep' AND USER = 'r91da3ck0vve9p27'
+ORDER BY TIME DESC;

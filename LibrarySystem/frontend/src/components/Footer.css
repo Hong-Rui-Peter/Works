@@ -1,0 +1,19 @@
+.footer-wapper {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.footer-position {
+  position: relative;
+  top: -15px;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.link:hover {
+  color: red;
+}

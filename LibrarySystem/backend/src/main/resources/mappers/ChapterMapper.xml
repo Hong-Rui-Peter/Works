@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupone.librarysystem.library_backend.mapper.ChapterMapper">
+<select id="getBookByContent" resultType="com.groupone.librarysystem.library_backend.model.ChapterModel">
+    SELECT
+        id,
+        chapter_number,
+        created_at AS createDate,
+        content,
+        title
+        FROM `chapters` WHERE id = #{id};
+</select>
+
+
+    <select id="getBookContentById" resultType="com.groupone.librarysystem.library_backend.model.dto.ChapterRequest">
+        SELECT
+            B.id,
+            B.book_name AS bookName,
+            B.author,
+            B.book_icon AS bookIcon,
+            B.tag,
+            Ch.chapter_number,
+            Ch.created_at AS createDate,
+            Ch.content,
+            Ch.title
+        FROM chapters Ch
+                 LEFT JOIN book B ON B.id = Ch.id
+        WHERE Ch.id = #{id}
+          AND Ch.chapter_number = #{chapterNumber}
+            LIMIT 1
+            </select>
+</mapper>

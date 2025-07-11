@@ -1,0 +1,10 @@
+{
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/about": "index.html",
+    "/result": "index.html",
+    "/login": "index.html",
+    "/register": "index.html"
+  }
+}

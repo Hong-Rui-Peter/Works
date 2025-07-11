@@ -1,0 +1,24 @@
+### api測試包
+
+### for Register
+POST http://localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+  "account": "peter",
+  "password": "123456",
+  "email": "peter@mail.com",
+  "name": "Peter"
+}
+
+### for Login
+POST http://localhost:8080/api/user/login
+Content-Type: application/json
+
+{
+  "account": "peter",
+  "password": "123456"
+}
+
+### for Logout
+POST http://localhost:8080/api/user/logout

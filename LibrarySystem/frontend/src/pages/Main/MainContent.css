@@ -1,0 +1,102 @@
+/* 主要標題 */
+.content-txt {
+  text-align: left;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #ccc;
+  color: #333;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+/* 外層清單容器，使用 Flexbox */
+.popular__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* 單一書籍項目 */
+.popular__list .item {
+  flex: 1 1 48%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+/* 書籍圖片 */
+.item .image {
+  flex-shrink: 0;
+  width: 30%;
+  height: auto;
+}
+
+.item .image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 書籍文字區塊 */
+.item dl {
+  margin: 0;
+  flex: 1;
+}
+
+/* 書名區 */
+.item dl dt {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ccc;
+  font-weight: 200;
+  font-size: 15px;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+/* 書名左側小標籤 */
+.item dl dt span {
+  float: right;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* 書名連結 */
+.item dl dt a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 書籍介紹文字 */
+.item dl dd {
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 24px;
+  text-indent: 2em;
+  margin: 1px;
+  white-space: pre-line;
+  color: #555;
+}
+/* 響應式調整：手機單欄排列 */
+@media (max-width: 768px) {
+  .popular__list .item {
+    flex: 1 1 100%;
+    flex-direction: column;
+  }
+
+  .item .image {
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+  }
+
+  .item dl dt {
+    white-space: normal;
+    text-overflow: clip;
+  }
+}

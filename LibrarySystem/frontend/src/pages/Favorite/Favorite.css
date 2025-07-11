@@ -1,0 +1,78 @@
+.favorite-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.favorite-flex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* 兩欄 */
+  gap: 24px;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  align-items: center;
+  height: 250px; /* ✅ 高度固定，縮小卡片 */
+  align-items: center
+}
+
+.image {
+  flex-shrink: 0;
+  width: 140px;    /* 圖片放大一點 */
+  height: 300px;   /* 高一點，比例更好看 */
+  left:10px;
+  padding: 8px;
+  position: relative;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /*  保持比例、填滿容器 */
+  display: block;
+  border-radius: 4px;
+}
+
+dl {
+  padding: 8px 12px;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95%;
+  overflow: hidden;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+dt a {
+  margin-left: 8px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+dd {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

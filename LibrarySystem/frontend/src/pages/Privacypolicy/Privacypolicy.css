@@ -1,0 +1,24 @@
+.privacypolicy-wapper {
+  background-color: #fff;
+}
+
+.privacy-txt {
+  margin: 20px 0 10px;
+  position: relative;
+  top: 5px;
+}
+
+.privacypolicy-wapper hr {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.privacypolicy-wapper h4 {
+  float: left;
+  position: relative;
+  left: 45px;
+}
+
+.privacypolicy-wapper p {
+  margin: 40px;
+}

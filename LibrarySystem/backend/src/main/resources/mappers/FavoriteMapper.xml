@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.groupone.librarysystem.library_backend.mapper.FavoriteMapper">
+
+    <insert id="setFavoData">
+        INSERT INTO favorite (id, account, update_time)
+        VALUES (#{id}, #{account}, NOW())
+    </insert>
+
+    <delete id="dropFavoData">
+        DELETE FROM favorite
+        WHERE id = #{id} AND account = #{account}
+    </delete>
+
+    <select id="getBookData" resultType="com.groupone.librarysystem.library_backend.model.FavoriteModel">
+        SELECT
+        F.account,
+        B.id,
+        B.book_name AS bookName,
+        B.book_text AS bookText,
+        B.author,
+        B.book_icon AS bookIcon,
+        B.tag
+        FROM favorite F
+        LEFT JOIN book B ON B.id = F.id
+        WHERE F.account = #{account}
+        ORDER BY F.update_time DESC
+    </select>
+</mapper>

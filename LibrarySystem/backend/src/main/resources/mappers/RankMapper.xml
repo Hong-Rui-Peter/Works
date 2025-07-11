@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupone.librarysystem.library_backend.mapper.RankMapper">
+
+    <insert id="setRankData" parameterType="com.groupone.librarysystem.library_backend.model.Rank">
+        INSERT INTO `rank` (id, count) VALUES (#{id}, #{count})
+    </insert>
+
+    <select id="getRankData" resultType="com.groupone.librarysystem.library_backend.model.Rank">
+        SELECT * FROM `rank`;
+    </select>
+
+    <select id="getBookData" resultType="com.groupone.librarysystem.library_backend.model.BookResultModel">
+        SELECT
+        B.id,
+        B.book_name AS bookName,
+        B.book_text AS bookText,
+        B.author,
+        B.book_icon AS bookIcon,
+        B.tag,
+        B.created_at AS createTime,
+        R.count,
+        0 AS isLike
+        FROM  `rank` R
+        LEFT JOIN `book` B ON B.id = R.id
+        ORDER By R.count DESC ;
+    </select>
+
+
+    <update id="UpdateRankData" parameterType="com.groupone.librarysystem.library_backend.model.Rank">
+        UPDATE `rank`
+        SET count = count + 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>
