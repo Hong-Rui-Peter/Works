@@ -24,6 +24,6 @@ public interface RankMapper {
     void UpdateRankData(@Param("id")int id);
 
 
-    List<BookResultModel> getBookData();
+    List<BookResultModel> getBookData(@Param("account")String account);
 
 }

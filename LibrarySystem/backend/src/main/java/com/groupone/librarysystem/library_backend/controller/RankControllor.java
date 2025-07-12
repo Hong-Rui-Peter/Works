@@ -3,6 +3,7 @@ package com.groupone.librarysystem.library_backend.controller;
 import com.groupone.librarysystem.library_backend.model.BookResultModel;
 import com.groupone.librarysystem.library_backend.service.RankService.RankService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +46,9 @@ public class RankControllor {
      */
     @Operation(summary = "讀取排行榜")
     @GetMapping("/rank")
-    public List<BookResultModel> getRankData() {
-         var result = rankService.getBookData();
+    public List<BookResultModel> getRankData(HttpSession session) {
+        var account = (String)session.getAttribute("user");
+         var result = rankService.getBookData(account);
          return  result;
     }
 }

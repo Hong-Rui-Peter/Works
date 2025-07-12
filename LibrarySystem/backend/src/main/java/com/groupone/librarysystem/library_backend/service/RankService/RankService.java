@@ -18,5 +18,5 @@ public interface RankService {
      * 查詢-排行榜一覽表
      * @return 排行榜資料
      */
-    List<BookResultModel> getBookData();
+    List<BookResultModel> getBookData(String account );
 }

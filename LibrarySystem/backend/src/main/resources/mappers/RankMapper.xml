@@ -15,20 +15,24 @@
 
     <select id="getBookData" resultType="com.groupone.librarysystem.library_backend.model.BookResultModel">
         SELECT
-        B.id,
-        B.book_name AS bookName,
-        B.book_text AS bookText,
-        B.author,
-        B.book_icon AS bookIcon,
-        B.tag,
-        B.created_at AS createTime,
-        R.count,
-        0 AS isLike
-        FROM  `rank` R
-        LEFT JOIN `book` B ON B.id = R.id
-        ORDER By R.count DESC ;
+            B.id,
+            B.book_name AS bookName,
+            B.book_text AS bookText,
+            B.author,
+            B.book_icon AS bookIcon,
+            B.tag,
+            B.created_at AS createTime,
+            R.count,
+            CASE
+                WHEN #{account} = '' THEN 0        -- 如果帳號為空，isLike = 0
+                WHEN f.update_time IS NULL THEN 1  -- 沒有收藏紀錄
+                ELSE 2                             -- 有收藏紀錄
+                END AS isLike
+        FROM `rank` R
+                 LEFT JOIN `book` B ON B.id = R.id
+                 LEFT JOIN `favorite` f ON B.id = f.id AND f.account = #{account}
+        ORDER BY R.count DESC
     </select>
-
 
     <update id="UpdateRankData" parameterType="com.groupone.librarysystem.library_backend.model.Rank">
         UPDATE `rank`
